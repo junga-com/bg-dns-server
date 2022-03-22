@@ -1,0 +1,2 @@
+columns=zone name address ttl
+awkFile=/var/lib/bind/dnsARecords.awkData

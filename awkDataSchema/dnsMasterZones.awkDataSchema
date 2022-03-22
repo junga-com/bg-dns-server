@@ -1,0 +1,3 @@
+columns=zoneName zonePrimaryServer zoneEmail zoneTTL zoneNegTTL zoneSlaveRefresh zoneSlaveRetry zoneSlaveExpire dynamic
+awkFile=/var/lib/bind/dnsMasterZones.awkData
+defDisplayCols=zoneName zonePrimaryServer zoneEmail dynamic

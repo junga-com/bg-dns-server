@@ -1,0 +1,9 @@
+// note that listen-on requires {} but (most of) the others do not
+// its ok to add multiple listen-on lines to listen to more than one
+// IP. 127.0.0.1 is listen-on'd in the parent named.conf.x
+
+listen-on     {%listenIP:0.0.0.0%;}; // provide dns server on this IP (can have multiple)
+
+transfer-source %transferSrcIP:0.0.0.0%;  // src IP when this server requests a zone transfer from master
+notify-source   %notifySrcIP:0.0.0.0%;    // src IP when this server sends a notify to a slave
+query-source    %querySrcIP:0.0.0.0%;     // src IP when this server queries other internet dns servers

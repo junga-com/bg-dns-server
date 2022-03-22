@@ -1,0 +1,27 @@
+
+also-notify {
+};
+
+include "named.conf.default-zones";
+include "inc.authoritativeZones";
+
+// our internal view has the rfc1918 zones that describe our internal structure
+zone  "64.10.in-addr.arpa"  in   {type master;        file "rfc1918Zones/db.10.64";     };
+zone  "65.10.in-addr.arpa"  in   {type master;        file "rfc1918Zones/db.10.65";     };
+zone "193.10.in-addr.arpa"  in   {type master;        file "rfc1918Zones/db.10.193";    };
+zone "17.172.in-addr.arpa"  in   {type master;        file "rfc1918Zones/db.172.17";    };
+zone "18.172.in-addr.arpa"  in   {type master;        file "rfc1918Zones/db.172.18";    };
+zone "19.172.in-addr.arpa"  in   {type master;        file "rfc1918Zones/db.172.19";    };
+zone "20.172.in-addr.arpa"  in   {type master;        file "rfc1918Zones/db.172.20";    };
+zone "21.172.in-addr.arpa"  in   {type master;        file "rfc1918Zones/db.172.21";    };
+zone "22.172.in-addr.arpa"  in   {type master;        file "rfc1918Zones/db.172.22";    };
+zone "23.172.in-addr.arpa"  in   {type master;        file "rfc1918Zones/db.172.23";    };
+zone "24.172.in-addr.arpa"  in   {type master;        file "rfc1918Zones/db.172.24";    };
+zone "25.172.in-addr.arpa"  in   {type master;        file "rfc1918Zones/db.172.25";    };
+zone "26.172.in-addr.arpa"  in   {type master;        file "rfc1918Zones/db.172.26";    };
+zone "27.172.in-addr.arpa"  in   {type master;        file "rfc1918Zones/db.172.27";    };
+zone "28.172.in-addr.arpa"  in   {type master;        file "rfc1918Zones/db.172.28";    };
+zone "29.172.in-addr.arpa"  in   {type master;        file "rfc1918Zones/db.172.29";    };
+zone "30.172.in-addr.arpa"  in   {type master;        file "rfc1918Zones/db.172.30";    };
+zone "31.172.in-addr.arpa"  in   {type master;        file "rfc1918Zones/db.172.31";    };
+zone "168.192.in-addr.arpa" in   {type master;        file "rfc1918Zones/db.192.168";   };

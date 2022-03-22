@@ -1,0 +1,60 @@
+logging {
+	// cut down on log messages by sending lame-server msgs to null
+	category lame-servers {null;};
+	include   "/var/lib/bind/profile/named.conf.log";
+};
+
+# The ACL config defines the IP ranges that are specific to an organization
+include	"/var/lib/bind/profile/named.conf.acls";
+
+
+# this tells bind to open an http server to provide statistics on its operation --  http://127.0.0.1:8053/xml, http://127.0.0.1:8053/json
+statistics-channels {
+	inet 127.0.0.1 port 8053;
+};
+
+options {
+	version "[SECURED]";  // dont devulge that we are bind
+
+	# this will be the working folder of the running process. Relative paths for any input or output will be from here.
+	directory       "/var/lib/bind/profile";
+
+	# the config.ipAssignments specifies which local IPs (for multihomed hosts) are used for incoming and outgoing communication.
+	include         "/var/lib/bind/profile/named.conf.ipAssignments";
+
+	# Always listen to localhost in addition to what ever is in config.ipAssignments
+	listen-on       { 127.0.0.1; };
+
+	# "rndc dumpdb" will write to this file
+	dump-file       "/var/lib/bind/data/cache_dump.db";
+
+	# "rndc stats" will write to this file (but the http interface is probably better)
+	statistics-file "/var/lib/bind/data/named_stats.txt";
+
+	# these determine if and when the process will adjust the set of interfaces (local IPs) that it listens on.
+	# automatic-interface-scan means it will use linux netlink sockets to get triggered when local IPs change.
+	# interface-interval if set to a time (e.g. 30m) will scan the interfaces periodically
+	# in any case, the 'listen-on' setting is observed so this is mainly useful if the server is listening to any (0.0.0.0)
+	automatic-interface-scan yes;
+	interface-interval 0;
+
+	# which IPs can request a zone transfer from this server. this is the default allow-transfer which can be overriden in a zone statement
+	allow-transfer  { ourNetworks; ourPublicIPs; };
+
+	# tell bind to use DNSSEC for upstream msgs. (this is separate from providing DNSSEC information in our zones)
+#	dnssec-validation auto;
+};
+
+# the internal view is what our inside network sees.
+view "internal" {
+	match-clients { ourNetworks; };
+	recursion yes;
+	include "named.conf.internalView";
+};
+
+# the external view is what the rest of the Internet sees.
+view "external" {
+	match-clients { any; };
+	recursion no;
+	include "named.conf.externalView";
+};

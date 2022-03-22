@@ -1,0 +1,2 @@
+zone "%domain%"              { type master; file "zones/%domain%";};
+zone "%dynLocationDomain%"   { type master; file "zones/%dynLocationDomain%"; allow-updates { %transferSrcIP%; }; };

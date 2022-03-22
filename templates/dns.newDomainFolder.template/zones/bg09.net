@@ -1,0 +1,14 @@
+$TTL 1200	; 20 minutes
+@	IN SOA	ns.junga.com. dnsmaster.junga.com. (
+				2022021802 ; serial
+				86400      ; refresh (1 day)
+				3600       ; retry (1 hour)
+				604800     ; expire (1 week)
+				600        ; minimum (10 minutes)
+				)
+			NS	ns.junga.com.
+			A	192.168.22.1
+
+foo			A	192.168.22.222
+www			A	192.168.22.10
+ns			A   192.168.22.1

@@ -1,0 +1,9 @@
+; DO NOT EDIT.  This file is created from the template %templateName%
+$TTL %zoneTTL%
+@	IN SOA	%zonePrimaryServer%. %zoneEmail%. (
+				%zoneSerial%	          ; zone serial
+				%zoneSlaveRefresh:1d%     ; slave refresh
+				%zoneSlaveRetry:1h%       ; slave retry
+				%zoneSlaveExpire:1w%      ; slave expire
+				%zoneNegTTL:20m% )        ; neg hit TTL
+$zoneNSRecords%

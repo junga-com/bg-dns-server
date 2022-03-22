@@ -1,2 +1,0 @@
-# this file lets you suppress lintian warnings for this package
-#bg-dns-server [binary | source]: tag-from-lintian-warning

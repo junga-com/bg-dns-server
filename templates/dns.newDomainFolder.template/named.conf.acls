@@ -1,0 +1,14 @@
+# https://bind9.readthedocs.io/en/latest/reference.html#address-match-lists
+
+# ourNetworks are the IPs used on the inside of our network -- basically all RFC1918 IPs
+acl ourNetworks {
+    127.0.0.0/24;
+    192.168.0.0/16;
+    172.16.0.0/12;
+	10.0.0.0/8;
+};
+
+# ourPublicIPs are the public IPs that we control
+acl ourPublicIPs {
+    209.137.135.192/26; // 7Teleport - KDDI
+};

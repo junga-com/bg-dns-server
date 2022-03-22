@@ -1,0 +1,14 @@
+; DO NOT EDIT.  This file is created from the template %templateName%
+$TTL 20m;
+@	IN SOA	ns.%+domain%. dnsmaster.%domain%. (
+				2022021802 ; serial
+				 1d        ; refresh (1 day)
+				 1h        ; retry (1 hour)
+				 1w        ; expire (1 week)
+				10m        ; minimum (10 minutes)
+				)
+			NS	ns.%domain%.
+			A	%+infraInsideIP%
+
+ns          A   %+infraOutsideIP%
+test        A   222.222.222.222
