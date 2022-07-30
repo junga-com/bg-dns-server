@@ -1,4 +1,4 @@
-bg-dns-server (1.0.0) focal; urgency=high
+bg-dns-server (0.1.0) focal; urgency=high
 
   * initial dev
 
